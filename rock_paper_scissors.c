@@ -10,6 +10,8 @@
 #include <sys/types.h>
 #include <wait.h>
 
+/* Compile with gcc -z execstack -m32 -fno-stack-protector */
+
 void flush();
 bool play();
 void admin(char *buff);
