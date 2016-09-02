@@ -210,7 +210,6 @@ int main(void)
 			if(WSTOPSIG(status) == SIGTRAP)
 			{
 				syscall = ptrace(PTRACE_PEEKUSER, pid, 4*ORIG_EAX,NULL);
-				struct user_reg_struct regs = ptrace(PTRACE_GETREGS, pid, &regs);
 				
 				/* get eax at the point of sigtrap */
 				if(syscall == 11)
