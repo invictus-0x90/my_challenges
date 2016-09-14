@@ -9,6 +9,7 @@
 #include <sys/prctl.h>
 #include <sys/types.h>
 #include <wait.h>
+#include <ctype.h>
 
 /* Compile with gcc -fno-stack-protector -z execstack -m32 -static rock_paper_scissors.c -o rock_paper_scissors */
 
@@ -102,7 +103,7 @@ bool play()
 		scanf("%c", &their_guess);
 		flush();
 		printf("My choice:%c\nYour choice:%c\n", my_guess, their_guess);
-
+		their_guess = toupper(their_guess);
 		/* Go through game rules */
 		if(my_guess == their_guess)
 			printf("[*] Draw!! Try again [*]\n");
