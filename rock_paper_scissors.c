@@ -19,19 +19,13 @@ void admin(char *buff);
 void admin(char *buff)
 {
 	char user[12];
+	int  *p = &(*buff);
 	memset(user, sizeof(user), 0);
 	memset(buff, sizeof(buff), 0);
 
 	printf("[***] Welcome to the super secret admin panel [*]\n");
-	printf("[***] This bonus area is all about custom shellcode ;)\n");
-	printf("[***] Bonus bonus points for using info leak to bypass aslr, if your using the aslr version of this challenge\n");
-	/* info leak */
-	printf("[*] Username >>>");
-	fgets(user, 11, stdin);
-	flush();
-	printf("\n:");
-	printf(user);
-
+	printf("[***] Password buffer @ %p\n", p);
+	
 	/* buffer overflow */
 	printf("\n[***] Please Enter the secret passphrase [***]\n");
 	printf(">>>");
@@ -66,14 +60,14 @@ void prompt(bool locked, char *buff)
 				break;
 			case 2:
 				printf("[***] Exiting [***]\n");
-				//exit(0);
+				exit(0);
 				return;
 			case 99:
 				if(!locked)//double check they haven't cheated
 				{
-					char buff[128];
+					char buff[128] = ""; //this will be overflowed
 					admin(buff);
-					return;
+					return; //this will be overwritten after 144bytes overflowed
 				}
 				break;
 			default:
@@ -158,6 +152,7 @@ bool play()
 		fflush(stdout);
 	}
 	printf("[************************] YOU WIN!!! [*********************]\n");
+	printf("[***] You can now proceed to part 2 (a custom shellcode challenge) [***]\n");
 	return false;
 }
 
