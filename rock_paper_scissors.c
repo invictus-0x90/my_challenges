@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <wait.h>
 
-/* Compile with gcc -z execstack -m32 -fno-stack-protector */
+/* Compile with gcc -fno-stack-protector -z execstack -m32 -static rock_paper_scissors.c -o rock_paper_scissors */
 
 void flush();
 bool play();
