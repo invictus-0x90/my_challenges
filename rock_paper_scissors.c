@@ -176,7 +176,6 @@ int main(void)
 
 	/* Double woops */
 	srand(seed);
-
 	/* Create a sandbox that forks here */
 	/* Trace the process and stop any execve syscalls */
 	int status = 0;
