@@ -12,7 +12,7 @@
 #include <ctype.h>
 
 /* Compile with gcc -fno-stack-protector -z execstack -m32 -static rock_paper_scissors.c -o rock_paper_scissors */
-
+void prompt(bool locked, char *buff);
 void flush();
 bool play();
 void admin(char *buff);
